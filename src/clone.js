@@ -99,6 +99,8 @@ module.exports = function(ownerDocument, containerDocument, width, height, optio
         // Chrome scrolls the parent document for some reason after the write to the cloned window???
         restoreOwnerScroll(ownerDocument, x, y);
         documentClone.replaceChild(documentClone.adoptNode(documentElement), documentClone.documentElement);
+        // change for IE http://stackoverflow.com/questions/31793507/html2canvas-renders-page-with-wrong-layout-in-ie11-whed-devtools-not-opened
+        container.width = width + 1;
         documentClone.close();
     });
 };
